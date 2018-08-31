@@ -1,0 +1,27 @@
+version: '2.2'
+services:
+  mongodb:
+    image: mongo:3.4.10-jessie
+    ports:
+      - "27017:27017"
+    volumes:
+        - .:/app
+
+  rails: &rails
+    build:
+      context: .
+    depends_on:
+      - mongodb
+    links:
+      - mongodb
+    command: bundle exec rails s -b 0.0.0.0 -p 3000
+    ports:
+      - "3000:3000"
+    environment:
+      RAILS_ENV: development
+
+  test:
+    <<: *rails
+    command: bundle exec rake test
+    environment:
+      RAILS_ENV: test
