@@ -5,6 +5,8 @@ ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
+# gem 'rails', github: 'arturictus/rails', branch: 'fix_cache_infinite_loop'
+# gem 'rails', path: '../gems/rails'
 
 # Mongoid as ORM
 gem 'mongoid', '~> 6'
