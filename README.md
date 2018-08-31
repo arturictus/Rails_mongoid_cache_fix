@@ -17,10 +17,12 @@ article.to_a
 ## Possible solution:
 
 The infinite loop is here:
+
 https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache.rb#L663
 
 Proposed solution:
 
+https://github.com/arturictus/rails/blob/fix_cache_infinite_loop/activesupport/lib/active_support/cache.rb#L656
 
 
 ### Test Error
