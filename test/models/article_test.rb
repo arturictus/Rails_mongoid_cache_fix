@@ -16,4 +16,11 @@ class ArticleTest < ActiveSupport::TestCase
     assert Rails.cache.write(article, 'hello')
     assert Rails.cache.delete(article)
   end
+
+  test "stored with cache_key" do
+    article = Article.create!(name: 'Rails rocks', content: 'Yep!')
+    cache_key = article.cache_key
+    assert Rails.cache.write(article, 'hello')
+    assert_equal Rails.cache.read(cache_key), 'hello'
+  end
 end
