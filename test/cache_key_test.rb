@@ -4,6 +4,7 @@ class CacheKeyTest < ActiveSupport::TestCase
 
   class ExampleObject
     def cache_key; 'foo_cache_key' end
+    def cache_version; 'foo_cache_version' end
     def to_a; [self] end
   end
 
@@ -18,6 +19,11 @@ class CacheKeyTest < ActiveSupport::TestCase
   test "mongoid implements 'cache_key'" do
     art = Article.new
     assert art.respond_to?(:cache_key)
+  end
+
+  test "mongoid implements 'cache_version'" do
+    art = Article.new
+    assert art.respond_to?(:cache_version)
   end
 
 end
